@@ -13,4 +13,5 @@ make distclean
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 ./configure --cross-prefix=x86_64-w64-mingw32- --arch=x86_64 --target-os=mingw64 --enable-gpl --enable-libx265 --pkg-config-flags=--static --extra-ldflags=-pthread --pkg-config=pkg-config
 make -j4 install
+cp /usr/x86_64-w64-mingw32/sys-root/mingw/bin/*.dll .
 popd
