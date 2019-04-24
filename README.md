@@ -22,6 +22,10 @@ To build windows x64 release binary:
 
 `docker run --rm -v ${PWD}:/mnt -w /mnt cycycyc/centos-build /bin/bash build_mingw64.sh`
 
+To build windows x86 release binary:
+
+`docker run --rm -v ${PWD}:/mnt -w /mnt cycycyc/centos-build /bin/bash build_mingw32.sh`
+
 If you are using Docker Desktop on **Windows**, you cannot use `${PWD}` to get the current directory for mounting, instead you should fill a full MinGW path of current directory like:
 
 `docker run --rm -v /c/path/to/docker-ffmpeg:/mnt -w /mnt cycycyc/centos-build /bin/bash <script.sh>`
