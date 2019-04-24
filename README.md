@@ -1,5 +1,7 @@
 # docker-ffmpeg
 
+[![Docker Automated build](https://img.shields.io/docker/cloud/automated/cycycyc/centos-build.svg)](https://hub.docker.com/r/cycycyc/centos-build)
+
 Use docker to build ffmpeg with libx265 and etc. on various platforms.
 
 ## Install Docker Desktop
