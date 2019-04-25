@@ -9,10 +9,7 @@ before_install:
 script:
 - mkdir -p targets/centos
 - docker run --rm -v ${PWD}:/mnt -w /mnt cycycyc/centos-build /bin/bash build_centos.sh
-- cp ffmpeg/ffmpeg targets/centos
-- mkdir -p targets/win32
-- docker run --rm -v ${PWD}:/mnt -w /mnt cycycyc/centos-build /bin/bash build_mingw32.sh
-- cp ffmpeg/ffmpeg.exe ffmpeg/*.dll targets/win32
+- cp ffmpeg/ffmpeg targets/centos/ffmpeg-linux-amd64
 - mkdir -p targets/win64
 - docker run --rm -v ${PWD}:/mnt -w /mnt cycycyc/centos-build /bin/bash build_mingw64.sh
 - cp ffmpeg/ffmpeg.exe ffmpeg/*.dll targets/win64
