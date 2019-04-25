@@ -11,6 +11,6 @@ popd
 pushd ffmpeg
 make distclean
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
-scl enable devtoolset-7 './configure --enable-gpl --enable-libx265 --pkg-config-flags=--static --extra-ldflags=-pthread'
+scl enable devtoolset-7 './configure --disable-doc --enable-gpl --enable-libx265 --pkg-config-flags=--static --extra-ldflags=-pthread'
 scl enable devtoolset-7 'make -j4 install'
 popd

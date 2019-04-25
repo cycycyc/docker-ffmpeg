@@ -13,7 +13,7 @@ popd
 pushd ffmpeg
 make distclean
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
-./configure --cross-prefix=i686-w64-mingw32- --arch=x86 --target-os=mingw32 --enable-gpl --enable-libx265 --pkg-config-flags=--static --extra-ldflags=-pthread --pkg-config=pkg-config
+./configure --disable-doc --cross-prefix=i686-w64-mingw32- --arch=x86 --target-os=mingw32 --enable-gpl --enable-libx265 --pkg-config-flags=--static --extra-ldflags=-pthread --pkg-config=pkg-config
 make -j4 install
 cp /usr/i686-w64-mingw32/sys-root/mingw/bin/*.dll .
 popd
