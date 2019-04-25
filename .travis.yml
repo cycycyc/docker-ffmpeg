@@ -9,20 +9,19 @@ before_install:
 script:
 - mkdir -p targets/centos
 - docker run --rm -v ${PWD}:/mnt -w /mnt cycycyc/centos-build /bin/bash build_centos.sh
-- cp ffmpeg/ffmpeg targets/centos
-- mkdir -p targets/win32
-- docker run --rm -v ${PWD}:/mnt -w /mnt cycycyc/centos-build /bin/bash build_mingw32.sh
-- cp ffmpeg/ffmpeg.exe ffmpeg/*.dll targets/win32
+- cp ffmpeg/ffmpeg targets/centos/ffmpeg-linux-amd64
 - mkdir -p targets/win64
 - docker run --rm -v ${PWD}:/mnt -w /mnt cycycyc/centos-build /bin/bash build_mingw64.sh
 - cp ffmpeg/ffmpeg.exe ffmpeg/*.dll targets/win64
+- zip -r targets/ffmpeg-windows-x64.zip targets/win64/*
 
 deploy:
   provider: releases
   api_key:
     secure: sQQSK/A8JMuHqT6HdmltWRwXePEMxz1o9br7mfIUeGJ6MT2IBfulHS9kfm1OH/YvIMWIHXegXI1iioFtiZNmFoW56TmF09lQ5ODC4isWxQrb1xcU27L4ArOoWkiB/k2heqv8eNJGbHQbMAp3FatOVSnAcxp3IkyXVeNQ16aCdwXuQ4dnCh/hK4WTjVrIJq3XWnLJTcFocNVoTZvT7QitDN1/Opy0qPtQTBoi8dPgBTVfSmqEairATXHEHazdBHAA/8FjHHJuy4Z8RzwXWDp4vXID4ufJz28D27Ld5PLH25rkePWTpLd5wCCOlmc0psv+e50RWNZhAG4wypMZLGqGCS/oKVNMcvd//8+Qbh46i5UEP8vE58RYdjhc/au7ESmETwMlzSvjxLKmkly49/a9xBEjEaspkr1V6T6ntIOvZod2UeS0ZliA8ufAGGY5HDgJPswCkiVyj9dxQDG3vL12/IfVWWt65mVV5xUa9wlq0dNPUl5zlDj2urUdPnLk4D6XSr6W0L6UowFIGWKfWoxcO5+R+2E6MQusdEIVbFhFE9XF7IzSFwjwW69G6lx9kF0v5JPt1AeJS6+Te/ETyBulDkkuWb6Bvv8TGMhL8Mm5UXnM+3QMVtLlW2yNgRBOdD4AK9XGG767kBVw9FcNNtpXC40ktBHPSTHf6g7bdD8Xs28=
-  file_glob: true
-  file: targets/**/*
+  file:
+    - targets/centos/ffmpeg-linux-amd64
+    - targets/ffmpeg-windows-x64.zip
   skip_cleanup: true
   on:
     tags: true
